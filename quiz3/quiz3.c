@@ -1,0 +1,165 @@
+#include <stdio.h>
+#include "quiz3.h"
+
+
+/*
+ * Print all even numbers up to, and including  n.
+ * If n is odd, it should not be printed.
+ *
+ * Example output:
+ * 2 4 6 8
+ */
+void print_even(int n)
+{
+  char* sep = "";
+  int i;	
+  for(i = 1; i <= n ; i++){
+    if(i % 2 == 0){
+      printf("%s%d", sep, i);
+      sep = " ";
+    }
+  }
+}
+
+/*
+ * Print this pattern for upto n rows (n > 0). For example, if n = 5:
+ *
+ *         #####
+ *         ####
+ *         ###
+ *         ##
+ *         #
+ *
+ */
+void print_pattern(int n)
+{
+  int i, j;
+  for(i = 0 ; i < n; i++){
+    for(j = n-i; j > 0; j--){
+      printf("%c", '#');
+    }
+     printf("\n");
+  }
+}
+
+/*
+ * Given a score >= 0, return its corresponding grade letter based
+ * on this table.
+
+ * 0  - 49: F
+ * 50 - 59: E
+ * 60 - 69: D
+ * 70 - 79: C
+ * 80 - 89: B
+ * 90+    : A
+ */
+char grade(int score)
+{
+  if(score >= 90){
+    return 'A';
+  }
+  else if(score >= 80 && score < 90){
+    return 'B';
+  }
+  else if(score >= 70 && score < 80){
+    return 'C';
+  }
+  else if(score >= 60 && score < 70){
+    return 'D';
+  }
+  else if(score >= 50 && score < 60){
+    return 'E';
+  }
+  else if(score >= 0 && score < 50){
+    return 'F';
+  }
+}
+
+/*
+ * In C, boolean types (i.e., true or false) are actually integers
+ * which evaluate to true if the value is non-zero.
+ * Write a function that returns true if n is prime, false otherwise.
+ */
+int is_prime(int n)
+{
+  int is_prime = 1;
+  int i;
+  if(n < 2)
+    is_prime = 0;
+  else if(i >= 2)
+    {for(i = 2; i < n ; i++)
+	{
+	if(n % i == 0)
+	  {
+	    is_prime = 0;
+	    break;
+	  }
+	}
+    }
+  return is_prime;
+}
+
+/*
+ * Return the sum of all digits for the input n. Assume n is
+ * non-negative.
+ */
+int sum_of_digits(int n)
+{
+  int sum = 0;
+  while(n > 0){
+    sum += (n % 10);
+    n /= 10;
+  }
+  return sum;
+}
+
+/*
+ * Given an operator (one of '+', '-', '*', '/'), and two numbers
+ * calculate the result of applying that operation to the two
+ * numbers.
+ *
+ * Bonus points for using a switch statement.
+ */
+float calc(int x, int y, char op)
+{
+  switch(op){
+      case '+':
+	return x + y;
+
+      case '-':
+	return x - y;
+
+      case '*':
+	return x * y;
+
+      case '/':
+	return (float)x / y;
+  }
+}
+/*
+ * This function should calculate the reverse of the input
+ * number n and return it. Preserve the sign of the number. If
+ * it is negative the returned value should be negative and
+ * vice versa.
+ */
+int reverse(int n)
+{
+  int result = 0;
+  int digit = 0;
+  int oldN = n;
+  if(n < 0){
+    n = 0 - n;
+  }
+  while(n > 0){
+    digit = n % 10;
+    result = result * 10 +  digit;
+    n /= 10;
+  }
+  if(oldN < 0){
+    result = 0 - result;
+  }
+  return result;
+}
+ 
+
+
